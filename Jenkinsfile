@@ -1,6 +1,7 @@
 pipeline {
 
-
+    agent any
+	
     stages {
         stage("CHECKOUT") {
             steps {
@@ -9,7 +10,7 @@ pipeline {
         }
 
     }
-	
-	echo "Git checkout completed."
+
+    echo "Git checkout completed."
 
 }
