@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   x-ibm-name: sample-api
   title: Sample API
-  version: 1.0.0
+  version: 2.0.0
 schemes:
   - https
 host: $(catalog.host)
