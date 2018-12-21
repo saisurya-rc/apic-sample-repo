@@ -1,9 +1,5 @@
 pipeline {
 
-    agent {
-        label 'linux'
-    }
-
 
     stages {
         stage("CHECKOUT") {
@@ -13,5 +9,7 @@ pipeline {
         }
 
     }
+	
+	echo "Git checkout completed."
 
 }
