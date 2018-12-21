@@ -1,0 +1,28 @@
+product: 1.0.0
+info:
+  name: sample-product
+  title: Sample Product
+  version: 1.0.0
+visibility:
+  view:
+    type: public
+  subscribe:
+    type: authenticated
+plans:
+  limited-access-plan:
+    title: Limited Access Plan
+    apis:
+      sample-api:
+        operations:
+          - operation: get
+            path: /v1/user
+  default:
+    title: Default Plan
+    description: Default Plan
+    approval: true
+    rate-limit:
+      value: 15/1minute
+      hard-limit: false
+apis:
+  sample-api:
+    $ref: sample-api_1.0.0.yaml

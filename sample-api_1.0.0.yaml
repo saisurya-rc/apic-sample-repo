@@ -1,0 +1,100 @@
+swagger: '2.0'
+info:
+  x-ibm-name: sample-api
+  title: Sample API
+  version: 1.0.0
+schemes:
+  - https
+host: $(catalog.host)
+basePath: /sample-api
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  clientIdHeader:
+    type: apiKey
+    in: header
+    name: X-IBM-Client-Id
+security:
+  - clientIdHeader: []
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  assembly:
+    execute:
+      - operation-switch:
+          title: operation-switch
+          case:
+            - operations:
+                - verb: get
+                  path: /v1/user
+              execute:
+                - gatewayscript:
+                    title: javascript
+                    version: 1.0.0
+                    source: |-
+                      var output={
+                          "userId":"1"
+                      };
+                      session.output.write(output);
+            - operations:
+                - verb: post
+                  path: /v1/user
+              execute:
+                - gatewayscript:
+                    title: javascript
+                    version: 1.0.0
+                    source: |-
+                      var output={
+                          "message":"User Created"
+                      };
+                      session.output.write(output);
+            - operations:
+                - verb: put
+                  path: /v1/user
+              execute:
+                - gatewayscript:
+                    title: javascript
+                    version: 1.0.0
+                    source: |-
+                      var output={
+                          "message":"User Updated"
+                      };
+                      session.output.write(output);
+            - operations:
+                - verb: delete
+                  path: /v1/user
+              execute:
+                - gatewayscript:
+                    title: javascript
+                    version: 1.0.0
+                    source: |-
+                      var output={
+                          "message":"User Deleted"
+                      };
+                      session.output.write(output);
+          otherwise: []
+          version: 1.0.0
+paths:
+  /v1/user:
+    get:
+      responses:
+        '200':
+          description: 200 OK
+    post:
+      responses:
+        '200':
+          description: 200 OK
+    delete:
+      responses:
+        '200':
+          description: 200 OK
+    put:
+      responses:
+        '200':
+          description: 200 OK
+definitions: {}
+tags: []
