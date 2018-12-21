@@ -8,12 +8,6 @@ pipeline {
                 checkout scm
             }
         }
-        post {
-            always {
-
-                echo "Git checkout completed."
-            }
-        }
     }
 
 }
